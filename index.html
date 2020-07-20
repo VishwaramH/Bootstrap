@@ -31,7 +31,8 @@
                     <li class="nav-item"><a href="./contactus.html" class="nav-link"><span class="fa fa-address-card fa-lg"> Contact</a></li> <!--fa-address-card allows to add contact icon-->
                 </ul>
                 <span class="navbar-text">
-                    <a data-toggle="modal" data-target="#loginModal">
+                    <!-- <a data-toggle="modal" data-target="#loginModal"> -->
+                    <a id="loginButton">
                     <span class="fa fa-sign-in"></span> Login</a>
                 </span> <!--creates a login button in nav bar with icon-->
             </div>
@@ -43,7 +44,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Login </h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                    <button type="button" class="close" id="loginclosebtn">&times;</button>
                 </div>
                 <div class="modal-body">
                     <form>
@@ -65,7 +67,8 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancel</button>
+                            <!-- <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancel</button> //using data-* attributes-->
+                            <button type="button" class="btn btn-secondary btn-sm ml-auto" id="loginclose">Cancel</button><!--using manual jquery-->
                             <button type="submit" class="btn btn-primary btn-sm ml-1">Sign in</button>        
                         </div>
                     </form>
@@ -84,8 +87,13 @@
                     <img src="img/logo.png" alt="logo" class="img-fluid"> <!--img-fluid makes the image to be responsive in all screen sizes-->
                 </div>
                 <div class="col-12 col-sm-3 align-self-center">
-                    <a role="button" class="btn btn-block nav-link btn-warning"
-                       data-html="true" data-toggle="modal" data-target="#reservemodal">Reserve Table</a><!-- title="Or Call us at  <br><strong>+852 12345678</strong>" data-toggle="tooltip"--> 
+                    
+                    <a role="button" class="btn btn-block nav-link btn-warning" id="reserve">Reserve Table</a><!--using manual jquery-->
+
+                    <!-- <a role="button" class="btn btn-block nav-link btn-warning"
+                       data-html="true" data-toggle="modal" data-target="#reservemodal">Reserve Table</a> --><!--using data-* attributes-->
+                       
+                       <!-- title="Or Call us at  <br><strong>+852 12345678</strong>" data-toggle="tooltip"--> 
                         <!-- (jquery-attribute)data-placement="bottom"  data-toggle(jquery attribute) is used for showing the tool-tip when we hover over the reserve table button -->
                 </div>
             </div>
@@ -97,7 +105,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Reserve a Table</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> --> <!--using data-* attributes-->
+                    <button type="button" class="close" id="cancelbuttonicon">&times;</button> <!--using manual jquery methods-->
                 </div>
                 <div class="modal-body">
                     <form>
@@ -156,7 +165,8 @@
                         </div>
                         <div class="form-group row">
                             <div class="offset-md-2 col-md-10">
-                                <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancel</button>
+                                <!-- <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancel</button> --> <!--using data-* attributes-->
+                                <button type="button" class="btn btn-secondary btn-sm ml-auto" id="cancelButton">Cancel</button> <!--using manual jquery-->
                                 <button type="submit" class="btn btn-primary btn-sm ml-1">Reserve</button>
                             </div>
                         </div>
@@ -414,6 +424,28 @@
                 $('#carouselButton').children('span').addClass('fa-pause');
             }
             });
+
+            // login modal jquery methods
+            $('#loginButton').click(function() {
+                $('#loginModal').modal('show');
+            });
+            $('#loginclose').click(function() {
+                $('#loginModal').modal('hide');
+            });
+            $('#loginclosebtn').click(function() {
+                $('#loginModal').modal('hide');
+            });
+
+            // reserve table modal jquery methods
+            $('#reserve').click(function() {
+                $('#reservemodal').modal('show');
+            });
+            $('#cancelButton').click(function() {
+                $('#reservemodal').modal('hide');
+            });
+            $('#cancelbuttonicon').click(function() {
+                $('#reservemodal').modal('hide');
+            })
         });
 
 
